@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>coffee survey</title>
+</head>
+<body>
+  <form name = "coffee survey" action="success.html" method="post">
+  <fieldset>
+    <div>
+      <label>Full name:</label>
+      <input type="text" name="fullname">
+    </div>
+    <div>
+      <label>Age:</label>
+      <input type="number" name="age" min="18" max= "70">
+    </div>
+    <div>
+      <label>Favorite Coffee</label>
+      <select name="coffee">
+        <option value="Latte">Latte</option>
+        <option value="espresso">Espresso</option>
+        <option value="coldbrew">Coldbrew</option>
+        <option value="french press">French press</option>
+      </select>
+    </div>
+    <div>
+    <label>Today's date:</label>
+    <input type="date" name="date">
+    </div>
+    <textarea rows="4" cols="50" name="comment">Tell us why you like coffee</textarea>
+  </fieldset>
+  <button type="submit">Submit your responses</button>
+  </form>
+</body>
+</html>
