@@ -13,4 +13,25 @@
 
 .smaller-text{
 	font-size: .8em;
+	color: blueviolet;
+	color: red;}
+
+
+#larger-text {
+	font-size: 2em;
 }
+
+p:first-child {
+	color: blue;
+}
+
+p:last-child{
+	color: green;
+}
+
+ul > li {
+	color: purple;
+}
+
+ 
+
