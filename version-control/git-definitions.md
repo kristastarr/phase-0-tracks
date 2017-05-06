@@ -2,6 +2,8 @@
 
 **Instructions: ** Define each of the following Git concepts.
 
+Good morning :) 
+
 * What is version control?  Why is it useful?
 
 Version control is a useful tool that allows developers to create a timeline of their project and revert back to previous points on the timeline.  It allows several developers to make a copy of the original project so that different people can work on different features simultaneously without making any changes to the original and later merge them all with the master. It allows developers to track progress and create backups of their work. 
