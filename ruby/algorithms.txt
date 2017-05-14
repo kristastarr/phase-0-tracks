@@ -1,0 +1,36 @@
+
+Algorithm: Teaching a robot to push correct elevator button
+ 
+1. Tell the robot what number floor you want. 
+2. The robot should check each floor- starting with the ground floor (floor 0)- to see if that floor is the floor that you wanted. 
+	-	If yes, press the button to select floor
+	-	If no, continue to the next floor to check if that floor is the one that you wanted
+
+Algorithm: How to get dressed for work when you hit snooze too many times! 
+
+1. Go to the closet and choose an article of clothing.
+
+	a.	If the first article is a dress, check to see if it’s work appropriate. 
+		If not work appropriate, then choose again
+		If it is work appropriate, then check to see if it is weather appropriate
+		If it is not weather appropriate, choose again
+		If it is weather appropriate, you are all set with your outfit so get dressed!
+		
+	b.	If the first article is a top, skirt, or pant, check to see if it’s work appropriate. 
+		If not work appropriate, choose again
+		If it is work appropriate, then check to see if it is also weather appropriate. 
+		If it is not weather appropriate, choose again
+		If it is weather appropriate, then proceed to choose a second article of clothing to wear with it
+
+			After choosing a second article of clothing, see if it is work appropriate. 
+				If no, choose again.  
+				If yes, see if matches the first article of clothing 
+				If no, choose again
+				If yes, see if it is weather appropriate
+				If no, choose again
+				If yes, then you have your outfit and you can proceed to get dressed!
+
+	c.	If the first article is NOT a dress, top, skirt, or pants, then choose again
+
+ *Make a class of clothing_items where each instance has attributes of article_type, work_appropriate, weather_appropriate, etc 
+ *Use random number generator method to generate index of clothing_items to randomly select a clothing item
