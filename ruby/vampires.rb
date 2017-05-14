@@ -25,12 +25,8 @@ while x < number
   	loop do 
       puts "Please enter any allergies and enter done when finished"
       allergy = gets.chomp
-      
-      if allergy == "sunshine"
-        result = "Probably a vampire."
-
-      else allergy == "done"
-       	break 
+       if allergy == "done"
+       	break
       end
      end 
     
@@ -51,21 +47,21 @@ while x < number
   		is_immortal = true
   	else is_immortal = false
   	end 
+
+  	if allergy == "sunshine"
+        result = "Probably a vampire."
   	
-  	case 
-  	 when is_lying == false && (likes_garlic == true && is_immortal == false) 
+  	if is_lying == false && (likes_garlic == true && is_immortal == false) 
   		result = "Probably not a vampire."
   		
-  	when (is_lying == true && likes_garlic == true) || (is_lying == true && is_immortal == false)
+  	if (is_lying == true && likes_garlic == true) || (is_lying == true && is_immortal == false)
   		result = "Probably a vampire."
 
-  	when name == "Drake Cula" || "Tu Fang"
+  	if name == "Drake Cula" || "Tu Fang"
       result = "Definitely a vampire."
 
-  	else result =
+  	if result =
   	 "Results inconclusive"	
-
-   end 
 
     puts "The result is: #{result}"
 	
