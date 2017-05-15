@@ -4,6 +4,8 @@ puts "How many employees do you want to process?"
 number = gets.to_i
 
 x = 0
+result = ""
+sunshine_allergy = ""
 
 while x < number 
 
@@ -51,17 +53,20 @@ while x < number
         end  
     
     case 
+      when sunshine_allergy == true
+        result = "Probably a vampire."
+    
       when name == "Drake Cula" || name == "Tu Fang"
         result = "Definitely a vampire."
-        
+        k
       when is_lying == false && (likes_garlic == true && is_immortal == false) 
         result = "Probably not a vampire."
-    
+        
+      when is_lying == true && likes_garlic == false && is_immortal == true
+        result = "Almost certainly a vampire." 
+          
       when (is_lying == true && likes_garlic == false) || (is_lying == true && is_immortal == true)
         result = "Probably a vampire."
-      
-      when is_lying == true && (likes_garlic == false && is_immortal == true)
-        result = "Almost certainly a vampire."
     
       else result =
       "Results inconclusive"    
