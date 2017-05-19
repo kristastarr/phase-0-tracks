@@ -9,7 +9,6 @@
 # If the user enters "none" then just go ahead and print the loop
 
 
-
 customer_data = {}
 
 puts "What is your name?"
@@ -20,7 +19,6 @@ customer_data[:age] = gets.to_i
 
 puts "How many children do you have?"
 customer_data[:children] = gets.to_i
-
 
 puts "What is your favorite color?"
 customer_data[:color] = gets.chomp
@@ -34,7 +32,6 @@ else
   customer_data[:likes_midcentury] = false 
 end   
 
-
 puts "Do you like frency country decor? y/n"
 french_country = gets.chomp
 
@@ -46,6 +43,7 @@ end
 
 puts "What about boho chic? y/n"
 boho_chic = gets.chomp 
+
 	if boho_chic = "y"
   customer_data[:likes_boho_chic] = true 
 else 
@@ -54,15 +52,17 @@ end
 
 puts "Here are your responses:"
 puts customer_data 
+
 puts "Would you like to change any of your responses? If no, enter none." 
 edit = gets.chomp 
 
-if edit == "none"
-	puts "Thanks for entering your responses!"
-else puts "Which one?"
-  key = gets.chomp.to_sym 
-  puts "What do you want to change it to?"
- customer_data[key] = gets.chomp 
- puts "Here are your updated responses:"
- puts customer_data
-end 
+	if edit == "none"
+		puts "Thanks for entering your responses!"
+	else 
+		puts "Which one?"
+  		key = gets.chomp.to_sym 
+  		puts "What do you want to change it to?"
+ 		customer_data[key] = gets.chomp 
+	 	puts "Here are your updated responses:"
+		 puts customer_data
+	end 
