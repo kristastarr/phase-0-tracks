@@ -20,36 +20,34 @@
 #  if yes, return to the beginning
 # if no, exit the loop
 
-#def alias_manager
+
 new_alias =  ""
 vowels = ["a","e", "i", "o", "u"]
-#vowels.map! {|x| }
 
-puts "Enter your first name or enter done to exit"
-first_name = gets.chomp
-
-puts "Enter your last name"
-last_name = gets.chomp
-
-full_name = last_name + " " + first_name
-
-splitname = full_name.downcase.split('')
-p splitname
-
-splitname.map! do |x|
+loop do
+    puts "Enter your first name or enter done to exit"
+    first_name = gets.chomp
+    if first_name == "done"
+        break
+        else puts "Enter your last name"
+        last_name = gets.chomp
+        
+        full_name = last_name + " " + first_name
+        
+        splitname = full_name.downcase.split('')
+        
+        splitname.map! do |x|
+            
+            if vowels.include? x
+                new_alias << "*"
+                elsif x == " "
+                new_alias << " "
+                else
+                new_alias << x.next
+            end
+        end 
+    end 
     
-    if vowels.include? x
-        new_alias << "*"
-        elsif x == " "
-        new_alias << " "
-        else
-        new_alias << x.next
-    end
-end
-
-puts "Your spy alias is #{new_alias}"
-
-
-#end
-
-#def next_vowel
+    
+    puts "Your spy alias is #{new_alias}"
+end 
