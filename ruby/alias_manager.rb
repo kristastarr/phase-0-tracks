@@ -20,22 +20,34 @@
 #  if yes, return to the beginning
 # if no, exit the loop
 
-#def alias
-puts "What is your first name?"
-firstname = gets.chomp
-puts "What is your last name?"
-lastname = gets.chomp
-fullname = lastname + " " + firstname
+#def alias_manager
+new_alias =  ""
+vowels = ["a","e", "i", "o", "u"]
+#vowels.map! {|x| }
 
-splitname = fullname.downcase.split('')
-splitname.map! { |letter| letter.next }
+puts "Enter your first name or enter done to exit"
+first_name = gets.chomp
 
-p splitname.join
+puts "Enter your last name"
+last_name = gets.chomp
 
+full_name = last_name + " " + first_name
 
+splitname = full_name.downcase.split('')
+p splitname
 
-#puts "Your spy alias is #{alias}"
-#puts "Do you want to generate another spy name?"
+splitname.map! do |x|
+    
+    if vowels.include? x
+        new_alias << "*"
+        elsif x == " "
+        new_alias << " "
+        else
+        new_alias << x.next
+    end
+end
+
+puts "Your spy alias is #{new_alias}"
 
 
 #end
