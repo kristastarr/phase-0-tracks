@@ -21,15 +21,17 @@
 # if no, exit the loop
 
 
-new_alias =  ""
-vowels = ["a","e", "i", "o", "u"]
+
+new_alias = ""
+vowels = "aeiou"
+consonants = "bcdfghjklmnpqrstvwxyz"
 
 loop do
     puts "Enter your first name or enter done to exit"
     first_name = gets.chomp
     if first_name == "done"
         break
-        else puts "Enter your last name"
+    else puts "Enter your last name"
         last_name = gets.chomp
         
         full_name = last_name + " " + first_name
@@ -38,16 +40,26 @@ loop do
         
         splitname.map! do |x|
             
-            if vowels.include? x
-                new_alias << "*"
-                elsif x == " "
+            if x == "u"
+                new_alias << "a"
+                
+            elsif vowels.include? x
+                new_vowel_index = vowels.rindex(x) + 1
+                new_alias << vowels[new_vowel_index]
+                
+            elsif x == "z"
+                new_alias << "a"
+                
+            elsif consonants.include? x
+                new_consonant_index = consonants.rindex(x) + 1
+                new_alias << consonants[new_consonant_index]
+                
+            else
                 new_alias << " "
-                else
-                new_alias << x.next
             end
-        end 
+        end
+        
+        p "Your spy alias is " + "#{new_alias}" + "!"
+        new_alias.clear
     end 
-    
-    
-    puts "Your spy alias is #{new_alias}"
-end 
+end
