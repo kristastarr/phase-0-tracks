@@ -1,24 +1,3 @@
-#Begin with a loop
-#First get the user's first and last name
-#Swap the order of the names by creating a new variable and making it a string which contains the last name, then a space, then the first name
-#Split the string into an array of characters
-#Change all the characters in the array to lowercase
-
-#Declare an empty array to hold the letters of the new alias
-#iterate through the characters in the array
-#determine if the character is a vowel.
-# if the character is a vowel,
-#match it to the vowel in an array of vowels (see what index)
-#using the index, change the vowel at the next index in the array of vowels
-# push that vowel to the alias
-# if the character is a space, push a space to the alias
-#if the character is a consonant, push the letter after the consonant to the alias
-#join the characters back into a string
-
-# print the string along with a message "Your alias is... "
-# ask the user if they want to do it again
-#  if yes, return to the beginning
-# if no, exit the loop
 
 
 def alias_creator(name1, name2)
@@ -55,13 +34,13 @@ def alias_creator(name1, name2)
             # end of run on each letter
             modified_name.capitalize!
         end
-        p modified_name
+        return modified_name
         
     end
     #end of run on each word
     
     new_alias = word_modifier(name1) + " " + word_modifier(name2)
-    p new_alias
+    return new_alias
     
 end
 
@@ -73,7 +52,7 @@ end
 # alias_array.push alias_creator("Krista", "Starr")
 # p alias_array
 
-alias_array = []
+alias_hash = {}
 loop do
     puts "Enter your first name or enter done to exit"
     first_name = gets.chomp
@@ -81,9 +60,8 @@ loop do
         break
         else puts "Enter your last name"
         last_name = gets.chomp
-        alias_array.push alias_creator(first_name, last_name)
-        p alias_array 
+        full_name = first_name + " " + last_name
+        alias_hash[full_name] = alias_creator(first_name, last_name)
+        p " #{alias_hash[full_name]} is really #{full_name}!" 
     end     
-end         
-
-
+end
