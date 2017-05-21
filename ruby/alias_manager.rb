@@ -21,45 +21,69 @@
 # if no, exit the loop
 
 
+def alias_creator(name1, name2)
+    
+    def word_modifier(name)
+        vowels = "aeiou"
+        consonants = "bcdfghjklmnpqrstvwxyz"
+        modified_name = ""
+        new_alias = ""
+        
+        # run on each word:
+        splitname = name.downcase.split('')
+        
+        # run on each letter:
+        splitname.map! do |x|
+            
+            if x === "u"
+                modified_name << "a"
+                
+                elsif vowels.include? x
+                new_vowel_index = vowels.rindex(x) + 1
+                modified_name << vowels[new_vowel_index]
+                
+                elsif x === "z"
+                modified_name << "a"
+                
+                elsif consonants.include? x
+                new_consonant_index = consonants.rindex(x) + 1
+                modified_name << consonants[new_consonant_index]
+                
+                else
+                modified_name << " "
+            end
+            # end of run on each letter
+            modified_name.capitalize!
+        end
+        p modified_name
+        
+    end
+    #end of run on each word
+    
+    new_alias = word_modifier(name1) + " " + word_modifier(name2)
+    p new_alias
+    
+end
 
-new_alias = ""
-vowels = "aeiou"
-consonants = "bcdfghjklmnpqrstvwxyz"
+#calling the method, pushing return value to an array
 
+# alias_array = [ ]
+# alias_array.push  alias_creator("Felicia", "Torres")
+# p alias_array
+# alias_array.push alias_creator("Krista", "Starr")
+# p alias_array
+
+alias_array = []
 loop do
     puts "Enter your first name or enter done to exit"
     first_name = gets.chomp
     if first_name == "done"
         break
-    else puts "Enter your last name"
+        else puts "Enter your last name"
         last_name = gets.chomp
-        
-        full_name = last_name + " " + first_name
-        
-        splitname = full_name.downcase.split('')
-        
-        splitname.map! do |x|
-            
-            if x == "u"
-                new_alias << "a"
-                
-            elsif vowels.include? x
-                new_vowel_index = vowels.rindex(x) + 1
-                new_alias << vowels[new_vowel_index]
-                
-            elsif x == "z"
-                new_alias << "a"
-                
-            elsif consonants.include? x
-                new_consonant_index = consonants.rindex(x) + 1
-                new_alias << consonants[new_consonant_index]
-                
-            else
-                new_alias << " "
-            end
-        end
-        
-        p "Your spy alias is " + "#{new_alias}" + "!"
-        new_alias.clear
-    end 
-end
+        alias_array.push alias_creator(first_name, last_name)
+        p alias_array 
+    end     
+end         
+
+
