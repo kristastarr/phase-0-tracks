@@ -13,6 +13,12 @@ while i < zombie_apocalypse_supplies.length
     i += 1
 end
 
+
+number_items = zombie_apocalypse_supplies.length
+number_items.times do |i|
+    puts zombie_apocalypse_supplies[i]
+    puts "*"
+    end
 # ----
 
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
@@ -129,16 +135,41 @@ extinct_animals = {
 
 # 1. Iterate through extinct_animals hash, printing each key/value pair
 # with a dash in between the key and value, and an asterisk between each pair.
+
+extinct_animals.each do |animal, year|
+    print  "#{animal} - #{year} * "
+end
 # ----
 
 # 2. Keep only animals in extinct_animals if they were extinct before
 # the year 2000. Do not use any special built-in methods.
+
+extinct_animals.keep_if {|animal, year| year < 2000}
+
+
+#(I am not sure if delete counts as a special built-in method)
+
+extinct_animals.map  do |animal, year|
+    if year > 1999
+        extinct_animals.delete(animal)
+    end
+end
+
 # ----
 
 # 3. Our calculations were completely off, turns out all of those animals went
 # extinct 3 years before the date provided. Update the values in extinct_animals
 # so they accurately reflect what year the animal went extinct.
 # Do not use any special built-in methods.
+
+
+extinct_animals.map do |animal, year|
+    change_year = extinct_animals[animal]
+    change_year = change_year + 3
+    extinct_animals[animal] = change_year
+end
+p extinct_animals
+
 # ----
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
@@ -153,4 +184,8 @@ extinct_animals = {
 # Remove them from extinct_animals and return the key value pair as a two item array.
 # Find the built-in method that helps you accomplish this in the Ruby documentation
 # for Hashes.
+
+extinct_animals = extinct_animals.delete("Passenger Pigeon")
+p extinct_animals
+
 # ----
