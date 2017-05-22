@@ -24,7 +24,7 @@ number_items.times do |i|
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
 # in alphabetical order. Do not use any special built-in methods.
 
-NOT WORKING NEED TO FINISH
+NOT WORKING - NEED TO FINISH
 
 zombie_apocalypse_supplies = ["hatchet", "rations", "water jug", "binoculars", "shotgun", "compass", "CB radio", "batteries"]
 
@@ -98,7 +98,7 @@ backpack(zombie_apocalypse_supplies)
 # Find the built-in method that helps you accomplish this in the Ruby
 # documentation for Arrays.
 
-NOT RUNNING_ NEED TO FINISH 
+NOT WORKING -  NEED TO FINISH
 
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove",
                             "solar battery", "flashlight"]
@@ -178,6 +178,19 @@ p extinct_animals
 # "Dodo"
 # "Saiga Antelope"
 # Do not use any special built-in methods.
+
+extinct = ""
+animal_to_check = "Andean Cat"
+extinct_animals.each do |animal, year|
+    if extinct_animals.include?(animal_to_check)
+        extinct = true
+        else
+        extinct = false
+    end
+    
+end 
+p extinct
+
 # ----
 
 # 5. We just found out that the Passenger Pigeon is actually not extinct!
