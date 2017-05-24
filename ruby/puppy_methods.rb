@@ -12,6 +12,15 @@ class Puppy
 
   def rolls_over
   	puts "Rolls over!"
+  end 
+
+  def dog_years(age)
+  	dog_age = age/7
+  	return dog_age
+  end 	
+
+  def stubborn
+  	p nil 
   end 	
 
 end
@@ -20,8 +29,9 @@ cookie = Puppy.new
 
 #cookie.fetch("ball")
 #cookie.speak(5)
-cookie.rolls_over
-
+#cookie.rolls_over
+#p cookie.dog_years(5)
+cookie.stubborn 
 
 
 	
