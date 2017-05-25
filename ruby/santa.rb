@@ -9,15 +9,38 @@ class Santa
 		puts "That was a good #{cookie} cookie!"
 	end 
 	
-	def initialize 
-		"Initializing Santa instance..."		
+	def initialize(gender, ethnicity) 
+		"Initializing Santa instance..."
+		@gender = gender 
+		@ethnicity = ethnicity
+		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", 
+			"Prancer", "Vixen", "Comet",
+			"Cupid", "Donner", "Blitzen"]	
+		@age = 0 		
 	end 
 		
 end 	
 
-santa = Santa.new
+#santa = Santa.new
+#santa.speak
+#santa.eat_milk_and_cookies("chocolate chip")
 
-santa.speak
+santas = []
+#santas << Santa.new("agender", "black")
+#santas << Santa.new("female", "latino")
+#santas << Santa.new("bigender", "white")
 
-santa.eat_milk_and_cookies("chocolate chip")
+#example_genders = ["agender", "female", "bigender", "male", 
+	#{}"female", "gender fluid", "N/A"]
+#example_ethnicities = ["black", "Latino", "white", "Japanese-African",
+#"prefer not to say", "Mystical Creatuer (unicorn)", "N/A"]
+
+#example_genders.length.times do |i|
+	#santas << Santa.new(example_genders[i], example_ethnicities[i])
+#end
+
+santas << Santa.new("nonbinary", "American Indian") 
+santas << Santa.new("trans", "White-Latino")
+santas << Santa.new("other", "Korean")
+p santas 
 
