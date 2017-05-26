@@ -1,8 +1,6 @@
 
 class Santa 
-
-	attr_reader :age, :ethnicity  
-	attr_accessor :gender 
+	attr_accessor :gender, :age, :ethnicity 
 
 	def initialize(gender, ethnicity) 
 		"Initializing Santa instance..."
@@ -11,7 +9,7 @@ class Santa
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", 
 			"Prancer", "Vixen", "Comet",
 			"Cupid", "Donner", "Blitzen"]	
-		@age = 0 		
+		@age = rand(0-140)		
 	end 
 
 	def speak 
@@ -49,13 +47,13 @@ end
 #santa.eat_milk_and_cookies("chocolate chip")
 
 #Creating instances of the Santa class 
-santa1 = Santa.new("other", "Korean")
+#santa1 = Santa.new("other", "Korean")
 
-santas = []
+#santas = []
 
-santas << Santa.new("nonbinary", "American Indian") 
-santas << Santa.new("trans", "White-Latino")
-santas << Santa.new("cis male", "Black")
+#santas << Santa.new("nonbinary", "American Indian") 
+#santas << Santa.new("trans", "White-Latino")
+#santas << Santa.new("cis male", "Black")
 
 #Testing the setter method on one instance and an array of instances 
 #Changing the individual Santa's gender
@@ -76,10 +74,36 @@ santas << Santa.new("cis male", "Black")
 #p santa1.get_mad_at("Comet")
 
 #Testing attr_reader and attr_accessor 
-p santa1.age
-p santa1.ethnicity 
-p santa1.gender
-p santa1.gender = "gender questioning"
-puts "Gender has been updated to: #{santa1.gender}"
+#p santa1.age
+#p santa1.ethnicity 
+#p santa1.gender
+#p santa1.gender = "gender questioning"
+#puts "Gender has been updated to: #{santa1.gender}"
+
+santas2 = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+## Stuff I'm keeping##
+#def make_santas(number_times)
+
+	#number_times.times #run the loop this many times 
+
+#end 
+#######
+#def santa_creator(num)
+
+		10.times do |i|
+  		santas2  << Santa.new(example_genders.sample, example_ethnicities.sample)
+		puts "---------------------------------"
+		puts "Santa ##{i} demographics:"
+		puts "Age: #{santas2[i].age}"
+		puts "Gender: #{santas2[i].gender}" 
+		puts "Ethnicity: #{santas2[i].ethnicity}" 
+		puts "---------------------------------"
+	end
+
+#end 
+
+#santa_creator(5)
 
 
