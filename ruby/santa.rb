@@ -1,6 +1,9 @@
 
 class Santa 
 
+	attr_reader :age, :ethnicity  
+	attr_accessor :gender 
+
 	def initialize(gender, ethnicity) 
 		"Initializing Santa instance..."
 		@gender = gender 
@@ -32,19 +35,10 @@ class Santa
 	 end 
 
 	#setter method that allows gender to be reassigned outside the class definition
-	def gender=(new_gender)
-		@gender = new_gender
-	end 
+	#def gender=(new_gender)
+		#@gender = new_gender
+	#end 
 
-	#getter methods 
-	def age
-		@age
-	end
-
-	def ethnicity
-		@ethnicity 
-	end 
-		 	
 end 
 
 
@@ -55,7 +49,7 @@ end
 #santa.eat_milk_and_cookies("chocolate chip")
 
 #Creating instances of the Santa class 
-Santa1 = Santa.new("other", "Korean")
+santa1 = Santa.new("other", "Korean")
 
 santas = []
 
@@ -80,9 +74,12 @@ santas << Santa.new("cis male", "Black")
 
 #Testing methods 
 #p santa1.get_mad_at("Comet")
-#p santa1.age
-#p santa1.ethnicity 
 
-
+#Testing attr_reader and attr_accessor 
+p santa1.age
+p santa1.ethnicity 
+p santa1.gender
+p santa1.gender = "gender questioning"
+puts "Gender has been updated to: #{santa1.gender}"
 
 
