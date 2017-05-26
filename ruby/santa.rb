@@ -35,15 +35,27 @@ class Santa
 	def gender=(new_gender)
 		@gender = new_gender
 	end 
+
+	#getter methods 
+	def age
+		@age
+	end
+
+	def ethnicity
+		@ethnicity 
+	end 
+		 	
 end 
 
 
 #----- driver code -----
+#Testing methods 
 #santa = Santa.new
 #santa.speak
 #santa.eat_milk_and_cookies("chocolate chip")
 
-santa1 = Santa.new("other", "Korean")
+#Creating instances of the Santa class 
+Santa1 = Santa.new("other", "Korean")
 
 santas = []
 
@@ -51,23 +63,26 @@ santas << Santa.new("nonbinary", "American Indian")
 santas << Santa.new("trans", "White-Latino")
 santas << Santa.new("cis male", "Black")
 
-
-#"Changing the individual Santa's gender"
+#Testing the setter method on one instance and an array of instances 
+#Changing the individual Santa's gender
 # santa1.gender = "female"
 #p santa1
 
-# Changing the gender of the santa at index 0 in the array of santas"
+#Changing the gender of the santa at index 0 in the array of santas
 #santas[0].gender = "androgynous"
 #p santas[0]
 
-# Looping through the array of santas and changing each one's gender to transgender female"
+#Looping through the array of santas and changing each ones gender 
 #santas.each do | item |
 	#item.gender = "transgender female"
 #end 	
 #p santas 
 
-#p santa1 # prints santa1 array of data
-#p santa1.reindeer_ranking # prints santa1 array of reindeer  
-#p santa1.reindeer_ranking[0] # prints the reindeer at index 0 of the array of reindeer 
+#Testing methods 
+#p santa1.get_mad_at("Comet")
+#p santa1.age
+#p santa1.ethnicity 
 
-p santa1.get_mad_at("Comet")
+
+
+
