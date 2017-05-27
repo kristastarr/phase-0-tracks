@@ -9,7 +9,7 @@ class Santa
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", 
 			"Prancer", "Vixen", "Comet",
 			"Cupid", "Donner", "Blitzen"]	
-		@age = rand(0-140)		
+		@age = rand(0-140) 		
 	end 
 
 	def speak 
@@ -80,30 +80,21 @@ end
 #p santa1.gender = "gender questioning"
 #puts "Gender has been updated to: #{santa1.gender}"
 
-santas2 = []
+
+
+
+puts "How many Santas would you like to create?"
+santas_needed = gets.chomp.to_i  
+santa_array = []
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
-## Stuff I'm keeping##
-#def make_santas(number_times)
 
-	#number_times.times #run the loop this many times 
-
-#end 
-#######
-#def santa_creator(num)
-
-		10.times do |i|
-  		santas2  << Santa.new(example_genders.sample, example_ethnicities.sample)
-		puts "---------------------------------"
-		puts "Santa ##{i} demographics:"
-		puts "Age: #{santas2[i].age}"
-		puts "Gender: #{santas2[i].gender}" 
-		puts "Ethnicity: #{santas2[i].ethnicity}" 
-		puts "---------------------------------"
-	end
-
-#end 
-
-#santa_creator(5)
-
-
+		santas_needed.times do |i|
+			santa_array  << Santa.new(example_genders.sample, example_ethnicities.sample)
+			puts "---------------------------------"
+			puts "Santa ##{i} demographics:"
+			puts "Age: #{santa_array[i].age}"
+			puts "Gender: #{santa_array[i].gender}" 
+			puts "Ethnicity: #{santa_array[i].ethnicity}" 
+			puts "---------------------------------"
+		end
