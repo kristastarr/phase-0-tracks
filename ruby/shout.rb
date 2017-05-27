@@ -8,3 +8,5 @@ module Shout
 	end 	 
 end 
 
+p Shout.yell_angrily('Who took the last donut??')
+p Shout.yelling_happily('kittens')
