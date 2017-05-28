@@ -17,8 +17,62 @@
 ## Start by displaying an array with "_" equal to secret_word.length (readable)
 ## After every guess, if secret_word contains guessed_letter, update display_word
 ## Find a method that will replace an item of an array with a specified value
-## Use that method to replace the _ in display_word at secret_word[i] with the guessed_letter
+## Use that method to replace the _ in display_word at secret_word[i] with the guessed_letter (use .fill)
 
-## If display_word does not contain "_" OR if counter = 0, the game ends
+## Create driver code to get user input for secret word and guesses 
+## If secret_word does not equal display_word, the game continues  (use .eql?)
+## If display_word does not contain "_" (win) OR if counter = 0 (lose), the game ends
 ## If secret_word === display word before counter = 0, then print a congratulatory message
 ## Otherwise, print a taunting message 
+
+class Game
+
+  def initialize(secret_word)
+    @secret_word =  secret_word
+  	@secret_word_arr = @secret_word.split(//)
+  	@turns = secret_word.length
+  	@guess = "guess"
+  	@guessed_letters = []   
+  end
+
+  def check_secret_word(guess)
+  	
+  		if @guessed_letters.include?(guess)
+  			p @guessed_letters 
+  			p @turns
+  			puts "You already guessed that! Enter another guess."
+
+  		elsif 
+  			@secret_word_arr.include?(guess)
+  			@guessed_letters << guess
+  			p @guessed_letters 
+  			@turns -=1 
+  			p @turns
+  			puts "Yes!"
+  			#run print result function
+  		else 
+  			@guessed_letters << guess
+  			p @guessed_letters 
+  			@turns -=1 
+  			p @turns 
+  			puts "No, guess again!"	
+  			#run print result function
+  		end 
+  	end 
+
+	def play_game 
+		until @turns == 0 
+		puts "Guess a letter!"
+		letter = gets.chomp
+		check_secret_word(letter)
+		end
+		puts "Game over!"
+	end 	
+
+end 
+
+
+game = Game.new("surprise")
+game.play_game 
+
+
