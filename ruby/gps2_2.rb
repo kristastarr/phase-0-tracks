@@ -36,3 +36,46 @@
 #1. Print each key and value as a string
 # output: A list of each key value pair on its own line
 
+def create_list(items_string)
+  list = {}
+  items_array = items_string.split(",")
+
+  items_array.each do |item|
+    list[item] = 1
+  end
+  print_pretty_list(list)
+end
+
+
+def add_item(list, item_name, quantity = 0)
+  list[item_name] = quantity
+  print_pretty_list(list)
+end
+
+
+def remove_item(list, item_name)
+  list.delete(item_name)
+  print_pretty_list(list)
+end
+
+
+def update_quantity(list, item_name, new_quantity)
+  list[item_name] = new_quantity
+  print_pretty_list(list)
+end
+
+
+def print_pretty_list(list)
+
+  list.each_with_index do |item, index|
+    puts "#{index + 1} #{item[0]}  = #{item[1]}"
+  end
+
+end
+
+# test method calls
+shopping_list = create_list("lemonade tomatoes onions ice")
+remove_item(shopping_list, "lemonade")
+update_quantity(shopping_list, "tomatoes", 3)
+update_quantity(shopping_list, "ice", 4)
+print_pretty_list(shopping_list)
