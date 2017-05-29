@@ -1,4 +1,5 @@
 ## Create a game
+# One user can enter a word and another user attempts to guess the word.
 ## make a Game class
 ## It will take a string which is the secret word (readable and writable)
 ## Then it will take a series or strngs (letters) which will be the guesses (readable and writable)
@@ -27,81 +28,71 @@
 
 class Game
 
+attr_accessor :guess, :turns, :secret_word
+attr_reader :guess_status
+
   def initialize(secret_word)
     @secret_word =  secret_word
   	@secret_word_arr = @secret_word.split(//)
-  	@turns = secret_word.length
   	@guess = "guess"
-  	@guessed_letters = [] 
-  	@display_word = []
-  	secret_word.length.times do 
-  		@display_word << "_" 
-  		end 
-	@reveal_word = @display_word.join 
-
+  	@guessed_letters = []
+  	@guess_status = ""
+  	@turns = @secret_word.length + 2 
   end
 
   def check_secret_word(guess)
   		@alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-  		if !@alphabet.include?(guess)  
-  			puts "That's not a letter! Guess again!"
+  		if @alphabet.include?(guess)  == false 
+  			@guess_status = "invalid" 
+  		
   	
   		elsif 
   			@guessed_letters.include?(guess)
-  			p @guessed_letters 
-  			p @turns
-  			puts "You already guessed that! Enter another guess."
+  			@guess_status = "repeat"
+  			
 
   		elsif 
   			@secret_word_arr.include?(guess)
   			@guessed_letters << guess
-  			p @guessed_letters 
   			@turns -=1 
-  			p @turns
-  			puts "Yes!"
-  			#run print result function
+  			@guess_status = "yes" 
+  			
+
   		else 
   			@guessed_letters << guess
-  			p @guessed_letters 
-  			@turns -=1 
-  			p @turns 
-  			puts "No, not in the word"	
-  			#run print result function
+  			@turns -=1 	
+  			@guess_status = "no"
+  		
   		end 
+  	
   	end 
-
-	def play_game 
-		# if secret_word === @reveal_word
-			#puts "Congratulations! You guessed it!"
-			# break
-		# else 	
-			until @turns == 0 
-			puts "Player 2, guess a letter!"
-			letter = gets.chomp
-			check_secret_word(letter)
-			end
-			puts "You didn't guess it! Try again..."
-			## 
-
-		end 	
-
-
-	def update_reveal_word(guess) 
-		#find what index the guess is in the secret word string
-		secret_word_index = secret_word.rindex(guess)
-
-		#change that index in the reveal word to the the letter 
-		reveal_word.replace(reveal_word[secret_word_index], guess)
-		
-	end 	
-
+	
 end 
 
+## User Interface 
 
 puts "Player 1, enter a word to guess"
 word = gets.chomp 
-game = Game.new(word)
-game.play_game 
+## need to find a way to not show the word in the teriminal once it is entered !!!!
 
+# game = Game.new(word)
+# # add code to stop the loop if the word is guessed 
+# #break if secret_word === @reveal_word
+# #puts "Congratulations! You guessed it!"
+# #else 
+
+# until game.turns == 0 
+
+# 	puts "Player 2, guess a letter!"
+# 	letter = gets.chomp
+			
+# 	game.check_secret_word(letter)
+# 	p game.guess_status 
+# 	puts "You have #{game.turns} guesses left"
+
+# end
+
+# puts "You didn't guess it! Try again..."
+	 	
 
