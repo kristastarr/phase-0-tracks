@@ -29,7 +29,7 @@
 class Game
 
 attr_accessor :guess, :turns, :secret_word
-attr_reader :guess_status
+attr_reader :guess_status, :display_word 
 
   def initialize(secret_word)
     @secret_word =  secret_word
@@ -38,35 +38,56 @@ attr_reader :guess_status
   	@guessed_letters = []
   	@guess_status = ""
   	@turns = @secret_word.length + 2 
+	@alphabet = "abcdefghijklmnopqrstuvwxyz"
+  	@index_counter = 0
+  	@secret_word_index_arr = []
+  	@display_word = ""
+  	secret_word.length.times do 
+  		@display_word << "_" 
+  		end 
+
   end
 
   def check_secret_word(guess)
-  		@alphabet = "abcdefghijklmnopqrstuvwxyz"
 
   		if @alphabet.include?(guess)  == false 
   			@guess_status = "invalid" 
   		
-  	
   		elsif 
   			@guessed_letters.include?(guess)
   			@guess_status = "repeat"
-  			
 
   		elsif 
   			@secret_word_arr.include?(guess)
   			@guessed_letters << guess
   			@turns -=1 
   			@guess_status = "yes" 
-  			
+  			update_display_word(guess)	
 
   		else 
   			@guessed_letters << guess
   			@turns -=1 	
   			@guess_status = "no"
-  		
+  			update_display_word(guess)
   		end 
   	
   	end 
+
+  	def update_display_word(guess)
+  			@secret_word_arr.each do |i|
+ 		 	if i == guess
+ 		 		@secret_word_index_arr << @index_counter
+  			end
+  		@index_counter +=1
+		end  
+
+		@secret_word_index_arr.each do |i|
+  			@display_word[i] = guess
+		end  
+
+		@secret_word_index_arr.clear 
+		@index_counter = 0
+  	end 	
 	
 end 
 
@@ -74,25 +95,27 @@ end
 
 puts "Player 1, enter a word to guess"
 word = gets.chomp 
-## need to find a way to not show the word in the teriminal once it is entered !!!!
+# need to find a way to not show the word in the teriminal once it is entered !!!!
 
-# game = Game.new(word)
-# # add code to stop the loop if the word is guessed 
-# #break if secret_word === @reveal_word
-# #puts "Congratulations! You guessed it!"
-# #else 
+game = Game.new(word)
+# # # # add code to stop the loop if the word is guessed 
+# # # #break if secret_word === @reveal_word
+# # # #puts "Congratulations! You guessed it!"
+# # # #else 
+while game.display_word !== game.secret_word 
 
-# until game.turns == 0 
+	until game.turns == 0 
 
-# 	puts "Player 2, guess a letter!"
-# 	letter = gets.chomp
+		puts "Player 2, guess a letter!"
+		letter = gets.chomp
 			
-# 	game.check_secret_word(letter)
-# 	p game.guess_status 
-# 	puts "You have #{game.turns} guesses left"
+		game.check_secret_word(letter)
+		p game.guess_status # use if statement here to print different message based on guess status 
+		p game.display_word  
+		puts "You have #{game.turns} guesses left"
+	 end 
+end
 
-# end
-
-# puts "You didn't guess it! Try again..."
+puts "You didn't guess it! Try again..."
 	 	
 
