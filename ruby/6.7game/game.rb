@@ -32,12 +32,23 @@ class Game
   	@secret_word_arr = @secret_word.split(//)
   	@turns = secret_word.length
   	@guess = "guess"
-  	@guessed_letters = []   
+  	@guessed_letters = [] 
+  	@display_word = []
+  	secret_word.length.times do 
+  		@display_word << "_" 
+  		end 
+	@reveal_word = @display_word.join 
+
   end
 
   def check_secret_word(guess)
+  		@alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+  		if !@alphabet.include?(guess)  
+  			puts "That's not a letter! Guess again!"
   	
-  		if @guessed_letters.include?(guess)
+  		elsif 
+  			@guessed_letters.include?(guess)
   			p @guessed_letters 
   			p @turns
   			puts "You already guessed that! Enter another guess."
@@ -55,24 +66,42 @@ class Game
   			p @guessed_letters 
   			@turns -=1 
   			p @turns 
-  			puts "No, guess again!"	
+  			puts "No, not in the word"	
   			#run print result function
   		end 
   	end 
 
 	def play_game 
-		until @turns == 0 
-		puts "Guess a letter!"
-		letter = gets.chomp
-		check_secret_word(letter)
-		end
-		puts "Game over!"
+		# if secret_word === @reveal_word
+			#puts "Congratulations! You guessed it!"
+			# break
+		# else 	
+			until @turns == 0 
+			puts "Player 2, guess a letter!"
+			letter = gets.chomp
+			check_secret_word(letter)
+			end
+			puts "You didn't guess it! Try again..."
+			## 
+
+		end 	
+
+
+	def update_reveal_word(guess) 
+		#find what index the guess is in the secret word string
+		secret_word_index = secret_word.rindex(guess)
+
+		#change that index in the reveal word to the the letter 
+		reveal_word.replace(reveal_word[secret_word_index], guess)
+		
 	end 	
 
 end 
 
 
-game = Game.new("surprise")
+puts "Player 1, enter a word to guess"
+word = gets.chomp 
+game = Game.new(word)
 game.play_game 
 
 
