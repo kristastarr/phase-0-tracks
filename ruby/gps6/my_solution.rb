@@ -1,7 +1,7 @@
 # Virus Predictor
 
 # I worked on this challenge with: Joe Alfaro.
-# We spent [#] hours on this challenge.
+# We spent 1 hour on this challenge and I spent an additional 20minutes doing the reflection.
 
 # EXPLANATION OF require_relative
 # require_relative is the same as copy and pasting code from a file in the same directory.
@@ -89,6 +89,28 @@ STATE_DATA.each do |state, value|
   state.print_method
 end
 
-
 #=======================================================================
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+  # The outer hash, STATE_DATA, uses a hash rocket to assign the variable to the key.  
+  # The inner hashes (one for each state/key) utilize a symbol for the key rahtner than the hash rocket
+
+# What does require_relative do? How is it different from require?
+# Require_relative links a file and specifies the pathway in relation to the current file you are working in,
+# while require links a file and specifies the absolute pathway 
+
+# What are some ways to iterate through a hash?
+# You could use .each or .map 
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+# I did not notice it at first but before we refactored them, the method was requiring that variables be passed in
+# We realized that we did not need to pass in variables becauese all the variables utilized within the method 
+# are actually attributes that are accessible throughout all the methods in the class, 
+# so we were able to refactor the code so that the methods no longer required any arguemnts 
+
+# What concept did you most solidify in this challenge?
+# The concept of private was new to me so I enjoyed learning about that.  
+# Also my temptation was to combine methods to make the code more concise but
+# my guide solidified the importance of creating methods that only have one function
+# so that they can be used separately if need be, and so that it's easier to de-bug if there's an issue
