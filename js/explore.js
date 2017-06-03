@@ -1,12 +1,8 @@
 //Make a function to reverse the letters in a string
-// function takes a string
-// split the string into an array of letters 
-// var string1 = "hello there"
-// string1[0]
-
-// string1.split("") 
-// string1[0]
-
+// make a function that takes a string
+// make a new variable to assign the reversed string to
+// start at the end of the string and push each letter to the new string
+// move backwards through the string pushing each letter to the new string
 
     
    function reverseString(word){
@@ -18,21 +14,12 @@
     return newString
     }
     
-    reverseString("Heyy there")
-    
-    // string2 = "he"
-    // string3 = string2 + "y"
-    // console.log(string3)
-    // string4 = string3 + 4
-    
-    var5 = reverseString;
-    
- reverseString("See you later");
+    // console.log(reverseString("Hey there"))
+
+    newWord = reverseString("Goodbye")
  
     if (1 == 1) { 
-   console.log reverseString("See you later");
-    
+   console.log(newWord)     
     }
-    
     
     
