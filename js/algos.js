@@ -21,7 +21,7 @@ function findLongestString(array){
 		}; 
 	};
 
-	console.log(longestString);
+	return longestString;
 }
 
 
@@ -52,6 +52,50 @@ var match;
 	else {return false}
 }
 
+// Write a function that takes an integer and returns an array of the strings
+// at a given length (ex input: 3, returns an array of 3 words)
+// The words should vary randomly in length (1 - 10 letters): 
+
+
+/// Create a "Create Array" function that takes a number - the number of words wanted in the array 
+// This number will specify how many times the "Create Word" function runs 
+// The Creat Array function will contain an empty array 
+
+// Within the "Create Word" function 
+// Create a function to generate a random number (between one and ten)
+// The random number will be the length of the random word- 
+// Pass the random number into another function that generates random letters = to the length of the random word
+// The function pushes those letters into a random word (string)
+// At the end of the loop, the new random word gets pushed into the empty array 
+// When the loop has run the specified number of times, the function returns the new array 
+
+ function createArray(wordsNeeded){
+ 	newArray = [];
+
+ 	while(wordsNeeded > 0){  
+
+		var numLetters = Math.floor(Math.random()* 10 + 1);
+		var alphabet = "abcdefghijklmnopqrstuvwxyz";
+		var randomWord = "";
+
+	function  randomWordMaker(wordLength){
+  		while(wordLength > 0){
+    	var randomLetterIndex = (Math.floor(Math.random() * alphabet.length));
+    	var randomLetter = alphabet[randomLetterIndex];
+    	randomWord = randomWord + randomLetter;
+    
+    	wordLength = wordLength - 1;
+ 		 }
+		
+		newArray.push(randomWord)
+	}
+
+	randomWordMaker(numLetters)
+	wordsNeeded = wordsNeeded - 1;
+	}
+
+	return newArray
+}
 
 //Driver Code 
 
@@ -77,6 +121,22 @@ var match;
 // console.log(checkMatch(nephew1, nephews));
 // console.log(checkMatch(nephew1, foods));
 // console.log(checkMatch(data, nephew1));
+
+
+// Add driver code that does the following 10 times: generates an array, 
+sampleArray = createArray(10)
+// prints the array, 
+console.log(sampleArray)
+// feeds the array to your "longest word" function,
+test1 = findLongestString(sampleArray)
+//  and prints the result.
+console.log(test1)
+
+console.log(findLongestString(createArray(8)))
+
+
+
+
 
 
 
