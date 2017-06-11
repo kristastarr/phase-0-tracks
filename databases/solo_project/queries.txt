@@ -59,7 +59,7 @@ Dreamcar|New Wave|Tito's
 
 Delete an item that meets some condition: 
 
-sqlite> DELETE FROM artists WHERE genre="country";
+sqlite> DELETE FROM artists WHERE genre="Country";
 sqlite> SELECT * FROM artists;
 1|Jay Z|Hip Hop|1|90|true
 2|Red Hot Chili Peppers|alternative|2|90|true
@@ -67,5 +67,41 @@ sqlite> SELECT * FROM artists;
 4|Solange|soul|3|90|true
 5|Asleep at the Wheel|Americana|3|30|false
 6|First Aid Kit|Folk|2|30|false
-7|Midland|Country|1|30|false
 8|Dreamcar|New Wave|2|30|false
+
+Trying out some different types of joins: 
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists INNER JOIN stages WHERE artists.stage_id = stages.id AND VIP="true";
+Jay Z|Hip Hop|Samsung|90
+Red Hot Chili Peppers|alternative|Tito's|90
+The Killers|Rock|Samsung|90
+Solange|soul|Honda|90
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists LEFT JOIN stages WHERE artists.stage_id = stages.id AND set_length < 60;
+Asleep at the Wheel|Americana|Honda|30
+First Aid Kit|Folk|Tito's|30
+Dreamcar|New Wave|Tito's|30
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists INNER JOIN stages WHERE artists.stage_id = stages.id AND stages.id = 2;
+Red Hot Chili Peppers|alternative|Tito's|90
+First Aid Kit|Folk|Tito's|30
+Dreamcar|New Wave|Tito's|30
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists RIGHT JOIN stages WHERE artists.stage_id = stages.id AND set_length < 60;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists LEFT JOIN stages WHERE artists.stage_id = stages.id and (stages.id = 1 OR stages.id = 2);
+Jay Z|Hip Hop|Samsung|90
+Red Hot Chili Peppers|alternative|Tito's|90
+The Killers|Rock|Samsung|90
+First Aid Kit|Folk|Tito's|30
+Dreamcar|New Wave|Tito's|30
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists INNER JOIN stages WHERE artists.stage_id = stages.id AND (stages.id = 2 OR VIP = "false");
+Red Hot Chili Peppers|alternative|Tito's|90
+Asleep at the Wheel|Americana|Honda|30
+First Aid Kit|Folk|Tito's|30
+Dreamcar|New Wave|Tito's|30
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name, artists.set_length FROM artists INNER JOIN stages WHERE artists.stage_id = stages.id AND (stages.id = 2 AND VIP = "true");
+Red Hot Chili Peppers|alternative|Tito's|90
