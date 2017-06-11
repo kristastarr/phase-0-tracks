@@ -1,14 +1,71 @@
 Solo Project- Queries
 
+Note: My Tables are based on artists scheduled for the upcoming ACL music festival and the stages from last year (this is not an actual schedule for the fest)
+ 
 Display the information in one table: 
 
-sqlite> SELECT * FROM artists;
-1|Jay Z|hip hop|Samsung|60|true
-2|Red Hot Chili Peppers|alternative|Honda|60|true
-3|The Killers|rock|Tito's|45|true
-4|Solange|soul|Samsung|45|true
-5|Asleep at the Wheel|americana|Honda|30|false
-6|First Aid Kit|folk|Tito's|30|false
-7|Midland|country|Samsung|30|false
-8|Dreamcar|new wave|Honda|30|false
+sqlite> DISPLAY * FROM artists;
+1|Jay Z|Hip Hop|1|60|true
+2|Red Hot Chili Peppers|alternative|2|60|true
+3|The Killers|Rock|1|60|true
+4|Solange|soul|3|60|true
+5|Asleep at the Wheel|Americana|3|30|false
+6|First Aid Kit|Folk|2|30|false
+7|Midland|Country|1|30|false
+8|Dreamcar|New Wave|2|30|false
 
+sqlite> SELECT * FROM stages;
+1|Samsung
+2|Tito's
+3|Honda
+
+
+Change the set length to 90 minutes if the artist is a VIP: 
+
+sqlite> UPDATE artists SET set_length = 90 WHERE VIP="true";
+sqlite> SELECT * FROM artists;
+1|Jay Z|Hip Hop|1|90|true
+2|Red Hot Chili Peppers|alternative|2|90|true
+3|The Killers|Rock|1|90|true
+4|Solange|soul|3|90|true
+5|Asleep at the Wheel|Americana|3|30|false
+6|First Aid Kit|Folk|2|30|false
+7|Midland|Country|1|30|false
+8|Dreamcar|New Wave|2|30|false
+
+Display the information from both tables in one table: 
+
+sqlite> SELECT * FROM artists, stages WHERE artists.stage_id = stages.id;
+1|Jay Z|Hip Hop|1|90|true|1|Samsung
+2|Red Hot Chili Peppers|alternative|2|90|true|2|Tito's
+3|The Killers|Rock|1|90|true|1|Samsung
+4|Solange|soul|3|90|true|3|Honda
+5|Asleep at the Wheel|Americana|3|30|false|3|Honda
+6|First Aid Kit|Folk|2|30|false|2|Tito's
+7|Midland|Country|1|30|false|1|Samsung
+8|Dreamcar|New Wave|2|30|false|2|Tito's
+
+Display selected information from both tables using one query:
+
+sqlite> SELECT artists.artist, artists.genre, stages.stage_name FROM artists JOIN stages WHERE artists.stage_id = stages.id;
+Jay Z|Hip Hop|Samsung
+Red Hot Chili Peppers|alternative|Tito's
+The Killers|Rock|Samsung
+Solange|soul|Honda
+Asleep at the Wheel|Americana|Honda
+First Aid Kit|Folk|Tito's
+Midland|Country|Samsung
+Dreamcar|New Wave|Tito's
+
+Delete an item that meets some condition: 
+
+sqlite> DELETE FROM artists WHERE genre="country";
+sqlite> SELECT * FROM artists;
+1|Jay Z|Hip Hop|1|90|true
+2|Red Hot Chili Peppers|alternative|2|90|true
+3|The Killers|Rock|1|90|true
+4|Solange|soul|3|90|true
+5|Asleep at the Wheel|Americana|3|30|false
+6|First Aid Kit|Folk|2|30|false
+7|Midland|Country|1|30|false
+8|Dreamcar|New Wave|2|30|false
