@@ -1,0 +1,14 @@
+Solo Project- Queries
+
+Display the information in one table: 
+
+sqlite> SELECT * FROM artists;
+1|Jay Z|hip hop|Samsung|60|true
+2|Red Hot Chili Peppers|alternative|Honda|60|true
+3|The Killers|rock|Tito's|45|true
+4|Solange|soul|Samsung|45|true
+5|Asleep at the Wheel|americana|Honda|30|false
+6|First Aid Kit|folk|Tito's|30|false
+7|Midland|country|Samsung|30|false
+8|Dreamcar|new wave|Honda|30|false
+
