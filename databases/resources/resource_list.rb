@@ -72,26 +72,7 @@ def add_resource(db, name, description, address, phone, url, email, county_id, n
 	db.execute(add_resource_cmd, [name, description, address, phone, url, email, county_id, needs_id])
 end 
 
-# Driver code to test the method:
-# add_resource(db, 
-# 	"Capitol Area Food Bank",
-# 	"Provides food to people in need",
-# 	"123 Main St Austin TX 78702",
-# 	"(512)533-3333", 
-# 	"www.capitolareafoodbank.com",
-# 	"admin@cafb.com",
-# 	1, 
-# 	2)
 
-# add_resource(db, 
-# 	"Children with Special Healthcare Needs",
-# 	"Provides medical insurance for medically fragile children",
-# 	"444 4th St Austin TX 78744",
-# 	"(512)444-4444", 
-# 	"none",
-# 	"info@cshcn.gov",
-# 	1, 
-# 	3)
 
 # Create a method that enables users to search for a particular type of resource in their county, 
 # then prints the results 
@@ -120,6 +101,18 @@ def search_resource(db, search_county, search_need)
 end 	
 
 ## Driver code - user interface: 
+
+# Driver code to test the add_resource method:
+# add_resource(db, 
+# 	"Capitol Area Food Bank",
+# 	"Provides food to people in need",
+# 	"123 Main St Austin TX 78702",
+# 	"(512)533-3333", 
+# 	"www.capitolareafoodbank.com",
+# 	"admin@cafb.com",
+# 	1, 
+# 	2)
+
 
 puts "Welcome to the Community Resource Database!!"
 
