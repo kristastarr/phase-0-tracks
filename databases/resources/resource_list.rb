@@ -46,16 +46,10 @@ db.execute(create_counties_table)
 db.execute(create_needs_table)
 db.execute(create_resources_table)
 
-# Used the terminal to populate the counties and needs tables- 
+# I used the terminal to populate the counties and needs tables- 
 # Since the users won't need to make changs to those tables, they don't need a UI
 
-
-	 
-
-
-
-
-# method that adds a resource to the resources table: 
+# Create a method that adds a resource to the resources table: 
 def add_resource(db, name, description, address, phone, url, email, county_id, needs_id)
 
 	add_resource_cmd = <<-cmd2
@@ -66,23 +60,6 @@ def add_resource(db, name, description, address, phone, url, email, county_id, n
 
 	db.execute(add_resource_cmd, [name, description, address, phone, url, email, county_id, needs_id])
 end 
-
-def resource_search(db, county, need)
-search = db.execute("SELECT * FROM resources")
-results = []
-
-	search.each do |listing|
-		if listing[7] == county_id.to_i && listing[8] == needs_id.to_i
-
-		results << listing
-
-		end 
-	end
-
-p results 	 
-end 	
-
-
 
 # Driver code to test the method:
 # add_resource(db, 
@@ -95,78 +72,128 @@ end
 # 	1, 
 # 	2)
 
+# add_resource(db, 
+# 	"Children with Special Healthcare Needs",
+# 	"Provides medical insurance for medically fragile children",
+# 	"444 4th St Austin TX 78744",
+# 	"(512)444-4444", 
+# 	"none",
+# 	"info@cshcn.gov",
+# 	1, 
+# 	3)
 
-## Driver code - user interface: 
-puts "Welcome to the Community Resource Database!!"
-puts "What do you want to do?"
-puts "Type 1 to add a resource to the database"
-puts "Type 2 to search for a resource in your area"
-puts "Type 3 to exit the program"
+# Create a method that enables users to search for a particular type of resource in their county, 
+# then prints the results 
+def search_resource(db, search_county, search_need)
 
-input = gets.chomp
+	search = db.execute("SELECT * FROM resources")
+	results = []
 
-if input.to_i == 1
+	search.each do |listing|
+		if listing[7] == search_county.to_i && listing[8].to_i == search_need.to_i 
+		results << listing
+		end 
+	end	
 
-	puts "Please enter the name of the organization"
-	name = gets.chomp
-	
-
-	puts "Please enter a short description of the assistance provided by the organization"
-	description = gets.chomp
-	 
-
-	puts "Please enter the address"
-	address = gets.chomp
-	
-
-	puts "Please enter the phone number"
-	phone = gets.chomp
-	
-
-	puts "Please enter the website address, or type none"
-	url = gets.chomp
-	 
-
-	puts "Please enter the best email or type none"
-	email = gets.chomp
-
-
-	puts "What county does this organization serve?"
-	puts "Enter 1 for Travis County"
-	puts "Enter 2 for Williamson County"
-	puts "Enter 3 for Hayes County"
-	county_id = gets.chomp   
-
-
-	puts "What type of assistance does this organization provide?"
-	puts "Enter 1 for housing"
-	puts "Enter 2 for food"
-	puts "Enter 3 for medical care"
-	puts "Enter 4 for counseling"
-	puts "Enter 5 for children's services"
-	needs_id = gets.chomp
-
-	add_resource(db, name, description, address, phone, url, email, county_id, needs_id)
-
-
-elsif input.to_i == 2
-
-	puts "What county do you live in?"
-	search_county = gets.chomp
-
-	puts "What type of assistance do you need?"
-	search_need = gets.chomp 
-
-	puts search_county
-	puts search_need
-
-	resource_search(db, search_county, search_need)
-
-
-# elsif input.to_i == 3 
-# 	break
-
-else 
-puts "Invalid entry- please try again"	
+	puts "Here is a list of resources:"
+	results.each do |i|
+	 	puts "Organization: #{i[1]}"
+	 	puts "Description: #{i[2]}"
+	 	puts "Address: #{i[3]}"
+	 	puts "Phone number: #{i[4]}"
+	 	puts "Website: #{i[5]}"
+	 	puts "Email: #{i[6]}"
+	 	puts "----------------------------------------"
+	end 
 
 end 	
+
+## Driver code - user interface: 
+
+puts "Welcome to the Community Resource Database!!"
+
+loop do 
+	puts "What do you want to do?"
+	puts "Type 1 to add a resource to the database"
+	puts "Type 2 to search for a resource in your area"
+	puts "Type 3 to exit the program"
+	input = gets.chomp
+
+	if input.to_i == 3
+		break 
+
+	else 	
+		if input.to_i == 1
+
+			puts "Please enter the name of the organization"
+			name = gets.chomp
+	
+			puts "Please enter a short description of the assistance provided by the organization"
+			description = gets.chomp
+	 
+			puts "Please enter the address"
+			address = gets.chomp
+	
+			puts "Please enter the phone number"
+			phone = gets.chomp
+
+			puts "Please enter the website address, or type none"
+			url = gets.chomp
+
+			puts "Please enter the best email or type none"
+			email = gets.chomp
+
+			puts "What county does this organization serve?"
+			puts "Enter 1 for Travis County"
+			puts "Enter 2 for Williamson County"
+			puts "Enter 3 for Hayes County"
+			county_id = gets.chomp   
+
+
+			puts "What type of assistance does this organization provide?"
+			puts "Enter 1 for housing"
+			puts "Enter 2 for food"
+			puts "Enter 3 for medical care"
+			puts "Enter 4 for counseling"
+			puts "Enter 5 for children's services"
+			needs_id = gets.chomp
+
+			add_resource(db, name, description, address, phone, url, email, county_id, needs_id)
+
+		elsif input.to_i == 2
+			
+			puts "What type of assistance do you need?"
+			puts "Enter 1 for housing"
+			puts "Enter 2 for food"
+			puts "Enter 3 for medical care"
+			puts "Enter 4 for counseling"
+			puts "Enter 5 for children's services"
+			search_need = gets.chomp 
+
+			puts "What county do you live in?"
+			puts "Enter 1 for Travis County"
+			puts "Enter 2 for Williamson County"
+			puts "Enter 3 for Hayes County"
+			search_county = gets.chomp
+
+			search_resource(db, search_county, search_need)
+
+		else 
+			puts "Invalid entry- please try again"	
+
+		end 
+	end 
+end 
+
+# Additional features I'd still like to work on:
+# Create a separate print method, rather than printing results within the search_resource function
+# Print a message if there are no results for a search query
+# Make a method to generate random data to add to the resources table for testing purposes
+# OR enter actual data into the resources table to make it a functioning database
+# If creating a user interface (web or mobile) have a drop down or check box to make selections, 
+# rather than having the user type in numbers
+# Some organizations serve more than one county; some organizations assist with  more than one need- 
+# Research how this could be accomodated
+
+
+
