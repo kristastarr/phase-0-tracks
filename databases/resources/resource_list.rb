@@ -1,6 +1,17 @@
 ## Database of Community Resources 
-# Require gems
+# Purpose: I worked for many years as a social worker, and always had to carry around binders of information
+# about community resources so I could connect my clients with suppport services to meet their needs
+# (for example, where to obtain assistance with food, clothing, school supplies, medical care, etc) 
+# I had to carry several copies of flyers about each resource so I could hand them out to each client that needed the info
+# It would have been great to have an easily accessible database where I could search for resources
+# to meet my clients needs- it would be quicker, more convenient, and more portable
+# The clients would like having access to the database as well, 
+# so they don't have to wait for their social worker to find them the help they need!
+# My program also allows for members of the community to add additional resources so the database can grow
+# (There are exisitng websites similar to this but I thought making my own would be a great way to learn)
 
+
+# Require gems
 require 'sqlite3'
 
 # Create database
@@ -190,10 +201,15 @@ end
 # Print a message if there are no results for a search query
 # Make a method to generate random data to add to the resources table for testing purposes
 # OR enter actual data into the resources table to make it a functioning database
+# Could add additional counties or needs 
 # If creating a user interface (web or mobile) have a drop down or check box to make selections, 
 # rather than having the user type in numbers
 # Some organizations serve more than one county; some organizations assist with  more than one need- 
 # Research how this could be accomodated
+# Not sure if the primary key/foreign keys really serve a purpose here but may be necessary if the db was more complex
+
+## Note: If you want to run the program to test it, you will want to search for a resource in Travis County
+# Currently the db has entries for all five types of assistance categories, but in Travis County only 
 
 
 
