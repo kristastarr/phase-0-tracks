@@ -22,3 +22,12 @@ Once I have experimented to the point where I understand the concepts and how to
 ### Breaks 
 I don't plan my breaks- I've gotten pretty good at recognizing when it's most productive for me to keep on going and when to take a break. I seem to work in spurts.
 Sometimes if I am very focused and making great progress, I don't like to break my concentration, even if I've been working for quite awhile.  I can tell I'm losing focus when I start getting easily frustrated, or when I read and re-read things and they still don't make sense. At that point, it's usually a good idea to step back and do something to change my mental state so I can come back and work with more concentration. When my focus is good, I usually end up taking a break to stretch, walk around, get coffee, etc about once an hour. 
+
+## What was effective
+I started out by Googling "What is jQuery" which gave me a bit of a starting point for additional things to Google
+I found and reviewed the jQuery docs
+As usual, W3 was a really helpful resource-
+Working in the TryIt Editor gave me the chance to experiment and understand what was going on
+Once I had an understanding of the basics (selectors, events, effects) I was able to apply jQuery to my project
+I found a good CSS cheat sheet to reference in the future
+I completely forgot that I have a book about Javascript and jQuery that I didn't even look at, but plan to!'
